@@ -5,6 +5,8 @@ import com.healthcare.screening.service.MLService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -13,10 +15,9 @@ public class PredictionController {
     private final MLService mlService;
 
     @PostMapping("/predict")
-    public String predict(@RequestBody PredictionRequest request){
+    public Map<String,Object> predict(@RequestBody PredictionRequest request){
 
         return mlService.getPrediction(request);
 
     }
-
 }
